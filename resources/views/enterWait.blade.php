@@ -84,6 +84,9 @@
 {{ Form::text('firstName') }}<br>
 {{ Form::label('titleLastName', 'Last Name:') }}
 {{ Form::text('lastName') }}<br>
+{{ Form::label('titleEmail', 'Email:') }}
+{{ Form::text('email') }}<br>
+
 
 <br>
 {{ Form::submit() }}

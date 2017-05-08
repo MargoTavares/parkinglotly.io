@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class WaitList extends Model
 {
-    protected $table = 'waitListMembers';
+    protected $table = 'waitList';
 }

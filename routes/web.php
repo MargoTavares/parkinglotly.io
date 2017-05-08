@@ -21,6 +21,10 @@ Route::get('/index', 'EnterController@index');
 Route::get('/enter/{id}/edit', 'EnterController@edit');
 Route::put('/enter/{id}', 'EnterController@update')->name('enter.update');
 
-//Route::get('/waitList', 'WaitListController@create');
-//Route::post('/waitList', 'WaitListController@store');
+Route::get('/waitList', 'WaitListController@create');
+Route::post('/waitList', 'WaitListController@store');
 Route::get('/waitList', 'WaitListController@index');
+
+Route::get('/enterWait', function () {
+    return view ('enterWait');
+});

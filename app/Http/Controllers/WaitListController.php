@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Ticket;
+use App\WaitList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
@@ -15,31 +16,24 @@ class WaitListController extends Controller
         $waitList = WaitList::all();
 
         return View::make('waitList')
-            ->with('waitListMembers', $waitList);
+            ->with('waitList', $waitList);
     }
 
     public function create() {
-        $occupiedSpaces = Ticket::all();
-        $availableSpaces = self::TOTAL_SPACES - $occupiedSpaces->count();
 
-        return view(
-            'enterWait',
-            [
-                'availableSpaces' => $availableSpaces,
-                'totalSpaces' => self::TOTAL_SPACES,
-            ]
-        );
     }
 
     public function store(Request $request) {
         $this->validate($request, [
             'firstName' => 'required|max:40',
             'lastName' => 'required|max:40',
+            'email' => 'required|email'
         ]);
 
         $waitList = new WaitList;
         $waitList->firstName = $request->firstName;
         $waitList->lastName = $request->lastName;
+        $waitList->email = $request->email;
         $waitList->save();
 
         return redirect('/waitList');
