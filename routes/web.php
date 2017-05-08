@@ -16,11 +16,11 @@ Route::get('/', function () {
 });
 
 Route::get('/enter', 'EnterController@create');
+Route::post('/enter', 'EnterController@store');
+Route::get('/index', 'EnterController@index');
+Route::get('/enter/{id}/edit', 'EnterController@edit');
+Route::put('/enter/{id}', 'EnterController@update')->name('enter.update');
 
-Route::get('/pay', function() {
-    return view('pay');
-});
-
-Route::get('/status', function(){
-   return view('status');
-});
+//Route::get('/waitList', 'WaitListController@create');
+//Route::post('/waitList', 'WaitListController@store');
+Route::get('/waitList', 'WaitListController@index');

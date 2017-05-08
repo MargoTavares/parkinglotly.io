@@ -84,8 +84,8 @@
 
                 <div class="links">
                     <a href="{{ url('/enter') }}">Enter Lot</a>
-                    <a href="{{ url('/pay') }}">Pay Ticket</a>
-                    <a href="{{ url('/status') }}">Lot Status</a>
+                    <a href="{{ url('/index') }}">Ticket Listing</a>
+                    <a href="{{ url('/waitList') }}">Wait List</a>
                 </div>
             </div>
         </div>

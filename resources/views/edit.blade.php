@@ -65,27 +65,34 @@
     </style>
 </head>
 <body>
-    <h1>Pay Ticket</h1>
+    <h1>Edit {{ $ticket->name }}</h1>
 
-    <p><span class="error">*** Please make sure inputs are correct *** </span></p>
-    <p>In order to leave the parking lot, </p><br>
-    <p>Please enter the following information:</p>
-    <form method="post" action="paid.php">
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
-        <label>Name:</label>
-        <input type="text" name="name"><br>
-        <label>License Plate:</label>
-        <input type="text" name="licensePlate"><br>
+    <p>Edit the following information:</p>
+    {{ Form::model($ticket, array('route' => array('edit.update', $ticket->id), 'method' => 'PUT')) }}
+        {{ Form::label('titleName', 'Name:') }}
+        {{ Form::text('name') }}<br>
+        {{ Form::label('titleLicensePlate', 'License Plate #:') }}
+        {{ Form::text('licensePlate') }}<br>
 
-        Choose Desired Time:
-        <select name="rateTime[ ]">
-            <option value="0">1hr</option>
-            <option value="1">3hr</option>
-            <option value="2">6hr</option>
-            <option value="3">ALL DAY</option>
-        </select>
+        {{ Form::label('titleTime', 'Choose Desired Time:') }}
+        {{ Form::select('rateTime', [
+            1 => '1hr',
+            3 => '3hr',
+            6 => '6hr',
+            24 => 'ALL DAY']
+        ) }}
         <br>
-        <input type="submit">
-    </form>
+        {{ Form::submit() }}
+    {{ Form::close() }}
 </body>
 </html>
