@@ -93,13 +93,30 @@
                         {{ $value->rateTime }} hrs
                     @elseif($value->rateTime == 1)
                         {{ $value->rateTime }} hr
+                    @elseif($value->rateTime == 'ALL DAY')
+                        ALL DAY
                     @endif
                 </td>
-                <td>${{ $value->rateTime * 3 }}</td>
                 <td>
-                    <a href="{{ action('EnterController@edit', ['id' => $value->id]) }}">
-                        <button>Edit</button>
-                    </a>
+                    ${{ number_format($prices[$value->rateTime] / 100, 2) }}
+                </td>
+                <td>
+                    {{
+                        Form::open([
+                            'route' => [
+                                'ticket.update',
+                                $value->id
+                             ],
+                            'method' => 'put'
+                        ])
+                     }}
+                        {{ Form::hidden ('is_valid', $value->is_valid) }}
+                            @if($value->is_valid)
+                                {{ Form::submit('Validate') }}
+                            @else
+                                {{ Form::submit('Invalidate') }}
+                            @endif
+                    {{ Form::close() }}
                 </td>
             </tr>
         @endforeach

@@ -89,7 +89,7 @@
             1 => '1hr',
             3 => '3hr',
             6 => '6hr',
-            24 => 'ALL DAY']
+            9 => 'ALL DAY']
         ) }}
         <br>
         {{ Form::submit() }}

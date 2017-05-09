@@ -18,6 +18,7 @@ class CreateTicketsTable extends Migration
             $table->string('name');
             $table->string('licensePlate');
             $table->string('rateTime');
+            $table->boolean('is_valid')->default(false);
             $table->timestamps();
         });
     }

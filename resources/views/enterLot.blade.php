@@ -62,13 +62,18 @@
         .m-b-md {
             margin-bottom: 30px;
         }
+
+        .error {
+            color: red;
+        }
+
     </style>
 </head>
 <body>
         <h1>Welcome to Vehikl's Parking Lot</h1>
 
         @if (count($errors) > 0)
-            <div class="alert alert-danger">
+            <div class="alert alert-danger error">
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -84,7 +89,7 @@
                 <p>There is {{ $availableSpaces }} parking space out of {{ $totalSpaces }} available.</p>
             @endif
             <p>Please enter the following information:</p>
-            {{ Form::open(array('action' => 'EnterController@store')) }}
+            {{ Form::open(array('action' => 'TicketController@store')) }}
 
                 {{ Form::label('titleName', 'Name:') }}
                 {{ Form::text('name') }}<br>
@@ -96,7 +101,7 @@
                     1 => '1hr',
                     3 => '3hr',
                     6 => '6hr',
-                    24 => 'ALL DAY']
+                    'ALL DAY' => 'ALL DAY']
                 ) }}
                 <br>
                 {{ Form::submit() }}

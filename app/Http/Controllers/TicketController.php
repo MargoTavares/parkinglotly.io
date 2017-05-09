@@ -6,16 +6,27 @@ use App\Http\Controllers\Controller;
 use App\Ticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
-
-class EnterController extends Controller
+use Illuminate\Support\Facades\Input;
+class TicketController extends Controller
 {
     const TOTAL_SPACES = 5;
+    const PRICE_ONE_HR = 300;
+    const PRICE_THREE_HR = 450;
+    const PRICE_SIX_HR = 675;
+    const PRICE_ALL_DAY= 1075;
 
     public function index() {
         $tickets = Ticket::all();
+        $prices = [
+            '1' => self::PRICE_ONE_HR,
+            '3' => self::PRICE_THREE_HR,
+            '6' => self::PRICE_SIX_HR,
+            'ALL DAY' => self::PRICE_ALL_DAY,
+        ];
 
         return View::make('index')
-            ->with('tickets', $tickets);
+            ->with('tickets', $tickets)
+            ->with('prices', $prices);
     }
 
     public function create() {
@@ -47,8 +58,14 @@ class EnterController extends Controller
         return redirect('/index');
     }
 
-    public function update() {
-        dd('high');
+    public function update($id) {
+        $ticket = Ticket::findOrFail($id);
+
+        $ticket->is_valid = ! Input::get('is_valid');
+
+        $ticket->save();
+//dd($ticket);
+        //return redirect('/index');
     }
     
     public function edit($id) {
@@ -56,7 +73,6 @@ class EnterController extends Controller
 
         return View::make('edit')
             ->with('ticket', $ticket);
-
     }
 
     public function destroy($id) {

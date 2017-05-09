@@ -15,11 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/enter', 'EnterController@create');
-Route::post('/enter', 'EnterController@store');
-Route::get('/index', 'EnterController@index');
-Route::get('/enter/{id}/edit', 'EnterController@edit');
-Route::put('/enter/{id}', 'EnterController@update')->name('enter.update');
+Route::get('/enter', 'TicketController@create');
+Route::post('/enter', 'TicketController@store');
+Route::get('/index', 'TicketController@index');
+Route::get('/enter/{id}/edit', 'TicketController@edit');
+Route::put('/enter/{id}', 'TicketController@update')->name('ticket.update');
 
 Route::get('/waitList', 'WaitListController@create');
 Route::post('/waitList', 'WaitListController@store');

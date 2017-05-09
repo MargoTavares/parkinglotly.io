@@ -62,13 +62,18 @@
         .m-b-md {
             margin-bottom: 30px;
         }
+
+        .error {
+            color: red;
+        }
+
     </style>
 </head>
 <body>
 <h1>Welcome to Vehikl's Parking Lot WaitList</h1>
 
 @if (count($errors) > 0)
-    <div class="alert alert-danger">
+    <div class="alert alert-danger error">
         <ul>
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
