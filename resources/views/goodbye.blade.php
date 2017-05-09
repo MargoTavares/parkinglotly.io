@@ -18,7 +18,16 @@
             font-family: 'Raleway', sans-serif;
             font-weight: 100;
             height: 100vh;
-            margin: 0;
+            margin-right : 1vh;
+        }
+
+        thead {
+            font-weight: bold;
+        }
+
+        td {
+            padding-left: 1vh;
+            padding-right: 1vh;
         }
 
         .full-height {
@@ -62,37 +71,13 @@
         .m-b-md {
             margin-bottom: 30px;
         }
+
     </style>
 </head>
 <body>
-    <h1>Edit</h1>
+<h1>Goodbye!</h1>
+<h3>Thank you for paying. You may now leave.</h3>
 
-    @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
-    <p>Edit the following information:</p>
-    {{ Form::model($ticket, array('route' => array('edit', $ticket->id), 'method' => 'PUT')) }}
-        {{ Form::label('titleName', 'Name:') }}
-        {{ Form::text('name') }}<br>
-        {{ Form::label('titleLicensePlate', 'License Plate #:') }}
-        {{ Form::text('licensePlate') }}<br>
-
-        {{ Form::label('titleTime', 'Choose Desired Time:') }}
-        {{ Form::select('rateTime', [
-            1 => '1hr',
-            3 => '3hr',
-            6 => '6hr',
-            9 => 'ALL DAY']
-        ) }}
-        <br>
-        {{ Form::submit() }}
-    {{ Form::close() }}
+<a href="/"><button>Return To Home Page</button></a>
 </body>
 </html>

@@ -64,18 +64,32 @@ class TicketController extends Controller
         $ticket->is_valid = ! Input::get('is_valid');
 
         $ticket->save();
-//dd($ticket);
-        //return redirect('/index');
     }
     
     public function edit($id) {
         $ticket = Ticket::find($id);
 
-        return View::make('edit')
-            ->with('ticket', $ticket);
+        $ticket->is_valid = ! Input::get('is_valid');
+
+        $ticket->save();
+
+        return redirect('/index');
     }
 
     public function destroy($id) {
+        $ticket = Ticket::find($id);
+
+        if($ticket->is_valid){
+            $ticket->delete();
+            return redirect('/goodbye');
+        }
+        else{
+            \Session::flash('flash_message',
+                'You must pay for your ticket before you leave.');
+            return redirect('/index');
+        }
+
+
 
     }
 }

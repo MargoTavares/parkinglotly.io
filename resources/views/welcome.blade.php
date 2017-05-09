@@ -86,6 +86,7 @@
                     <a href="{{ url('/enter') }}">Enter Lot</a>
                     <a href="{{ url('/index') }}">Ticket Listing</a>
                     <a href="{{ url('/waitList') }}">Wait List</a>
+                    <a href="{{ url('/exit') }}">Exit Lot</a>
                 </div>
             </div>
         </div>

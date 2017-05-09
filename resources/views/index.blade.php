@@ -76,8 +76,25 @@
 </head>
 <body>
     <h1>Members of Vehikl's Parking Lot</h1>
+    @if (Session::has('flash_message'))
+        <div class="alert alert-success">
+            {{ Session::get('flash_message') }}
+        </div>
+    @endif
+    <br>
+    @if (count($errors) > 0)
+        <div class="alert alert-danger error">
+
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <table>
         <thead>
+            <td>Ticket ID</td>
             <td>Name</td>
             <td>License</td>
             <td>Rate Time</td>
@@ -86,6 +103,7 @@
         <tbody>
         @foreach($tickets as $key => $value)
             <tr>
+                <td>{{ $value->id }}</td>
                 <td>{{ $value->name }}</td>
                 <td>{{ $value->licensePlate }}</td>
                 <td>
@@ -116,6 +134,16 @@
                             @else
                                 {{ Form::submit('Invalidate') }}
                             @endif
+                    {{ Form::close() }}
+                    {{ Form::open([
+                            'route' => [
+                                'ticket.destroy',
+                                $value->id
+                            ],
+                            'method' => 'delete'
+                        ])
+                    }}
+                        {{ Form::submit('Pay') }}
                     {{ Form::close() }}
                 </td>
             </tr>
