@@ -10,17 +10,26 @@ use Illuminate\Support\Facades\View;
 
 class WaitListController extends Controller
 {
-    const TOTAL_SPACES = 5;
+    const TOTAL_SPACES = 15;
 
     public function index() {
         $waitList = WaitList::all();
+        $tickets = Ticket::all();
 
         return View::make('waitList')
-            ->with('waitList', $waitList);
+            ->with('waitList', $waitList)
+            ->with('tickets', $tickets);
     }
 
     public function create() {
+        $tickets = Ticket::all();
 
+        return view(
+            'enterWait',
+            [
+                'tickets' => $tickets
+            ]
+        );
     }
 
     public function store(Request $request) {

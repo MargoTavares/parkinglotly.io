@@ -54,26 +54,29 @@ class TicketController extends Controller
         $ticket->licensePlate = $request->licensePlate;
         $ticket->rateTime = $request->rateTime;
         $ticket->save();
-
         return redirect('/index');
     }
 
     public function update($id) {
         $ticket = Ticket::findOrFail($id);
-
         $ticket->is_valid = ! Input::get('is_valid');
-
         $ticket->save();
+        return redirect('/index');
     }
     
     public function edit($id) {
-        $ticket = Ticket::find($id);
+        $occupiedSpaces = Ticket::all();
+        $availableSpaces = self::TOTAL_SPACES - $occupiedSpaces->count();
+        $ticket = Ticket::findOrFail($id);
 
-        $ticket->is_valid = ! Input::get('is_valid');
-
-        $ticket->save();
-
-        return redirect('/index');
+        return view(
+            '/enterLot',
+            [
+                'ticket' => $ticket,
+                'availableSpaces' => $availableSpaces,
+                'totalSpaces' => self::TOTAL_SPACES,
+            ]
+        );
     }
 
     public function destroy($id) {
@@ -88,8 +91,5 @@ class TicketController extends Controller
                 'You must pay for your ticket before you leave.');
             return redirect('/index');
         }
-
-
-
     }
 }
