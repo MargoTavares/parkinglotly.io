@@ -47,12 +47,12 @@
                 <td>{{ $value->name }}</td>
                 <td>{{ $value->licensePlate }}</td>
                 <td>
-                    @if($value->rateTime > 1)
+                    @if($value->rateTime == 9)
+                        ALL DAY
+                    @elseif($value->rateTime > 1)
                         {{ $value->rateTime }} hrs
                     @elseif($value->rateTime == 1)
                         {{ $value->rateTime }} hr
-                    @elseif($value->rateTime == 'ALL DAY')
-                        ALL DAY
                     @endif
                 </td>
                 <td>
@@ -96,7 +96,7 @@
                             'method' => 'delete'
                         ])
                     }}
-                    {{ Form::submit('Pay') }}
+                        {{ Form::submit('Pay') }}
                     {{ Form::close() }}
                 </td>
             </tr>
