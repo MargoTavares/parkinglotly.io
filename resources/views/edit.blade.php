@@ -1,4 +1,4 @@
- <h1>Edit</h1>
+ <h1>Edit Ticket #{{ $ticket->id }}</h1>
     @if (count($errors) > 0)
         <div class="alert alert-danger">
             <ul>
@@ -10,7 +10,8 @@
     @endif
 
     <p>Edit the following information:</p>
-    {{ Form::open() }}
+    {{ Form::model($ticket, array('route' => array('ticket.update',
+            $ticket->id), 'method' => 'PUT')) }}
         {{ Form::label('titleName', 'Name:') }}
         {{ Form::text('name', $ticket->name) }}<br>
         {{ Form::label('titleLicensePlate', 'License Plate #:') }}
@@ -25,5 +26,5 @@
             ])
         }}
         <br>
-        {{ Form::submit() }}
+        {{ Form::submit('Save Changes') }}
     {{ Form::close() }}

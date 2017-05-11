@@ -15,9 +15,9 @@
 </head>
 <body>
     <h1>Members of Vehikl's Parking Lot</h1>
-    @if (Session::has('flash_message'))
+    @if (Session::has('message'))
         <div class="alert alert-success">
-            {{ Session::get('flash_message') }}
+            {{ Session::get('message') }}
         </div>
     @endif
     <br>
@@ -59,24 +59,12 @@
                     ${{ number_format($prices[$value->rateTime] / 100, 2) }}
                 </td>
                 <td>
-                    {{ Form::open([
-                            'route' => [
-                                'ticket.edit',
-                                $value->id
-                             ],
-                             'method' => 'get'
-                        ])
-                    }}
-                        {{ Form::submit('Edit') }}
-                    {{ Form::close() }}
-                </td>
-                <td>
                     {{
                         Form::open([
                             'route' => [
-                                'ticket.update',
+                                'ticket.mark-paid',
                                 $value->id
-                             ],
+                            ],
                             'method' => 'put'
                         ])
                      }}
@@ -97,6 +85,18 @@
                         ])
                     }}
                         {{ Form::submit('Pay') }}
+                    {{ Form::close() }}
+                </td>
+                <td>
+                    {{ Form::open([
+                            'route' => [
+                                'ticket.edit',
+                                $value->id
+                             ],
+                             'method' => 'get'
+                        ])
+                    }}
+                    {{ Form::submit('Edit') }}
                     {{ Form::close() }}
                 </td>
             </tr>

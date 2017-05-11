@@ -57,11 +57,33 @@ class TicketController extends Controller
         return redirect('/index');
     }
 
-    public function update($id) {
+    public function markPaid($id) {
         $ticket = Ticket::findOrFail($id);
         $ticket->is_valid = ! Input::get('is_valid');
         $ticket->save();
         return redirect('/index');
+    }
+
+    public function update($id) {
+        $rules = [
+            'name'          => 'required',
+            'licensePlate'  => 'required'
+        ];
+        $validator = \Validator::make(Input::all(), $rules);
+
+        if ($validator->fails()) {
+            return \Redirect::to('tickets/' . $id . '/edit')
+                ->withErrors($validator);
+        }
+
+        $ticket = Ticket::find($id);
+        $ticket->name           = Input::get('name');
+        $ticket->licensePlate   = Input::get('licensePlate');
+        $ticket->rateTime       = Input::get('rateTime');
+        $ticket->save();
+
+        return \Redirect::to('/index')
+            ->withMessage('Successfully updated ticket.');
     }
     
     public function edit($id) {
@@ -69,14 +91,10 @@ class TicketController extends Controller
         $availableSpaces = self::TOTAL_SPACES - $occupiedSpaces->count();
         $ticket = Ticket::findOrFail($id);
 
-        return view(
-            '/enterLot',
-            [
-                'ticket' => $ticket,
-                'availableSpaces' => $availableSpaces,
-                'totalSpaces' => self::TOTAL_SPACES,
-            ]
-        );
+        return View::make('enterLot')
+            ->with('ticket', $ticket)
+            ->with('availableSpaces', $availableSpaces)
+            ->with('totalSpaces', self::TOTAL_SPACES);
     }
 
     public function destroy($id) {
