@@ -13,6 +13,32 @@
     <!-- Styles -->
     <link rel="stylesheet" href="/css/margoStyle.css" type="text/css">
 
+    <style>
+        html {
+            margin-left: 5vh;
+        }
+
+        input {
+            border-radius: 12px;
+            background-color: white;
+            transition-duration: 0.4s;
+        }
+
+        input:hover {
+            border-color: #EE783D;
+        }
+
+        button {
+            border-radius: 12px;
+            background-color: white;
+            transition-duration: 0.4s;
+        }
+
+        button:hover {
+            border-color: #EE783D;
+        }
+    </style>
+
 </head>
 <body>
     @if(Request::is('*/*/edit'))
@@ -50,7 +76,7 @@
                         6 => '6hr',
                         'ALL DAY' => 'ALL DAY'
                     ])
-                }}<br>
+                }}<br><br>
                 {{ Form::submit() }}
             {{ Form::close() }}
         @elseif($availableSpaces == 0)

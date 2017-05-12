@@ -12,6 +12,34 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="/css/margoStyle.css" type="text/css">
+
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 90%;
+        }
+        table, th {
+            font-weight: 300;
+            color: black;
+        }
+        table, th, td {
+            border: 1px solid black;
+            padding: 5px;
+        }
+        html {
+            margin-left: 5vh;
+        }
+        button {
+            border-radius: 12px;
+            background-color: white;
+            transition-duration: 0.4s;
+        }
+
+        button:hover {
+            border-color: #EE783D;
+        }
+    </style>
+
 </head>
 <body>
     <h1>Members of Vehikl's Parking Lot</h1>
@@ -38,7 +66,8 @@
             <td>License</td>
             <td>Rate Time</td>
             <td>Rate Price</td>
-            <td>Paid?</td>
+            <td>Status</td>
+            <td colspan="2">Options</td>
         </thead>
         <tbody>
         @foreach($tickets as $key => $value)
@@ -70,13 +99,14 @@
                      }}
                         {{ Form::hidden ('is_valid', $value->is_valid) }}
                             @if($value->is_valid)
-                                {{ Form::submit('Yes') }}
+                                {{ Form::submit('Paid') }}
                             @else
-                                {{ Form::submit('No') }}
+                                {{ Form::submit('Not Paid') }}
                             @endif
                     {{ Form::close() }}
                 </td>
-                <td>{{ Form::open([
+                <td>
+                    {{ Form::open([
                             'route' => [
                                 'ticket.destroy',
                                 $value->id
@@ -84,7 +114,7 @@
                             'method' => 'delete'
                         ])
                     }}
-                        {{ Form::submit('Pay') }}
+                        {{ Form::submit('Exit Lot') }}
                     {{ Form::close() }}
                 </td>
                 <td>
@@ -103,6 +133,7 @@
         @endforeach
         </tbody>
     </table>
+    <br>
     <a href="/"><button>Return To Home Page</button></a>
 </body>
 </html>

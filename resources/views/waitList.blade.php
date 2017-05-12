@@ -12,6 +12,35 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="/css/margoStyle.css" type="text/css">
+
+    <style>
+        html {
+            margin-left: 5vh;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+        }
+        table, th {
+            font-weight: 300;
+            color: black;
+        }
+        table, th, td {
+            border: 1px solid black;
+            padding: 5px;
+        }
+
+        button {
+            border-radius: 12px;
+            background-color: white;
+            transition-duration: 0.4s;
+        }
+
+        button:hover {
+            border-color: #EE783D;
+        }
+    </style>
 </head>
 <body>
 
@@ -38,7 +67,7 @@
     @else
         There is currently no one on the wait list.
     @endif
-    <a href="/"><button>Return To Home Page</button></a>
+    <p><a href="/"><button>Return To Home Page</button></a></p>
 
 </body>
 </html>

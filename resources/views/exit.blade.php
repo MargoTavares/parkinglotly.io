@@ -28,6 +28,5 @@
         }}
         {{ Form::close() }}
     <a href="/"><button>Return To Home Page</button></a>
-
 </body>
 </html>

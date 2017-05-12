@@ -54,14 +54,16 @@ class TicketController extends Controller
         $ticket->licensePlate = $request->licensePlate;
         $ticket->rateTime = $request->rateTime;
         $ticket->save();
-        return redirect('/index');
+        return \Redirect::to('/index')
+            ->withMessage('Thank you,' . $ticket->name .
+                '. You have successfully created a ticket.');
     }
 
     public function markPaid($id) {
         $ticket = Ticket::findOrFail($id);
         $ticket->is_valid = ! Input::get('is_valid');
         $ticket->save();
-        return redirect('/index');
+        return \Redirect::to('/index');
     }
 
     public function update($id) {
@@ -102,12 +104,12 @@ class TicketController extends Controller
 
         if($ticket->is_valid){
             $ticket->delete();
-            return redirect('/goodbye');
+            return \Redirect::to('/goodbye');
         }
         else{
             \Session::flash('flash_message',
                 'You must pay for your ticket before you leave.');
-            return redirect('/index');
+            return \Redirect::to('/index');
         }
     }
 }
