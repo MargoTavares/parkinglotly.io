@@ -42,7 +42,7 @@
                 <h1 class="hero-lead">Parkinglotly.io</h1>
                 <h2 class="hero-sub">An app created by: Margaret Tavares</h2>
                 <a href="{{ url('/tickets') }}" class="hero-buttons">Enter Lot</a>
-                {{--<a href="{{ url('/waitList') }}" class="hero-buttons">Wait List</a>--}}
+                <a href="{{ url('/waitList') }}" class="hero-buttons">Wait List</a>
                 <a href="{{ url('/index') }}" class="hero-buttons">Exit Lot</a>
             </div>
         </div>

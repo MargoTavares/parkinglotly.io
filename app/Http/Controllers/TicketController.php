@@ -9,11 +9,11 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Input;
 class TicketController extends Controller
 {
-    const TOTAL_SPACES = 5;
-    const PRICE_ONE_HR = 300;
+    const TOTAL_SPACES   = 5;
+    const PRICE_ONE_HR   = 300;
     const PRICE_THREE_HR = 450;
-    const PRICE_SIX_HR = 675;
-    const PRICE_ALL_DAY= 1075;
+    const PRICE_SIX_HR   = 675;
+    const PRICE_ALL_DAY  = 1075;
 
     public function index() {
         $tickets = Ticket::all();
@@ -30,39 +30,41 @@ class TicketController extends Controller
     }
 
     public function create() {
-        $occupiedSpaces = Ticket::all();
+        $occupiedSpaces  = Ticket::all();
         $availableSpaces = self::TOTAL_SPACES - $occupiedSpaces->count();
 
         return view(
             'enterLot',
             [
                 'availableSpaces' => $availableSpaces,
-                'totalSpaces' => self::TOTAL_SPACES,
+                'totalSpaces'     => self::TOTAL_SPACES,
             ]
         );
     }
 
     public function store(Request $request) {
         $this->validate($request, [
-            'name' => 'required|max:40',
-            'licensePlate' => 'required|max:8',
-            'rateTime' => 'required'
+            'name'          => 'required|max:40',
+            'licensePlate'  => 'required|max:8',
+            'rateTime'      => 'required'
         ]);
 
-        $ticket = new Ticket;
-        $ticket->name = $request->name;
+        $ticket               = new Ticket;
+        $ticket->name         = $request->name;
         $ticket->licensePlate = $request->licensePlate;
-        $ticket->rateTime = $request->rateTime;
+        $ticket->rateTime     = $request->rateTime;
         $ticket->save();
+
         return \Redirect::to('/index')
             ->withMessage('Thank you,' . $ticket->name .
                 '. You have successfully created a ticket.');
     }
 
     public function markPaid($id) {
-        $ticket = Ticket::findOrFail($id);
-        $ticket->is_valid = ! Input::get('is_valid');
+        $ticket             = Ticket::findOrFail($id);
+        $ticket->is_valid   = ! Input::get('is_valid');
         $ticket->save();
+
         return \Redirect::to('/index');
     }
 
@@ -89,9 +91,9 @@ class TicketController extends Controller
     }
     
     public function edit($id) {
-        $occupiedSpaces = Ticket::all();
-        $availableSpaces = self::TOTAL_SPACES - $occupiedSpaces->count();
-        $ticket = Ticket::findOrFail($id);
+        $occupiedSpaces     = Ticket::all();
+        $availableSpaces    = self::TOTAL_SPACES - $occupiedSpaces->count();
+        $ticket             = Ticket::findOrFail($id);
 
         return View::make('enterLot')
             ->with('ticket', $ticket)
@@ -112,4 +114,19 @@ class TicketController extends Controller
             return \Redirect::to('/index');
         }
     }
+
+    public function welcome() {
+        $occupiedSpaces  = Ticket::all();
+        $availableSpaces = self::TOTAL_SPACES - $occupiedSpaces->count();
+
+        return view(
+            'welcome',
+            [
+                'availableSpaces' => $availableSpaces,
+                'totalSpaces'     => self::TOTAL_SPACES,
+            ]
+        );
+    }
+
+
 }
