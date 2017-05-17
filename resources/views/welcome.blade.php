@@ -7,8 +7,10 @@
 
         <title>Parking Lot Challenge</title>
 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
 
         <!-- Styles -->
         <link rel="stylesheet" href="/css/margoStyle.css" type="text/css">
@@ -34,20 +36,32 @@
 
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            <div class="content">
-                <div class="title m-b-md">
-                    <img src="/img/vehikl_blog_logo.png">
-                    <br>
-                    Parking Lot Challenge
-                </div>
 
-                <div class="links">
-                    <a href="{{ url('/tickets') }}"><button>Enter Lot</button></a>
-                    <a href="{{ url('/waitList') }}"><button>Wait List</button></a>
-                    <a href="{{ url('/index') }}"><button>Exit Lot</button></a>
-                </div>
+        <div class="hero">
+            <div class="hero-content">
+                <h1 class="hero-lead">Parkinglotly.io</h1>
+                <h2 class="hero-sub">An app created by: Margaret Tavares</h2>
+                <a href="{{ url('/tickets') }}" class="hero-buttons">Enter Lot</a>
+                {{--<a href="{{ url('/waitList') }}" class="hero-buttons">Wait List</a>--}}
+                <a href="{{ url('/index') }}" class="hero-buttons">Exit Lot</a>
             </div>
         </div>
+
+
+        {{--<div class="flex-center position-ref full-height">--}}
+            {{--<div class="content">--}}
+                {{--<div class="title m-b-md">--}}
+                    {{--<img src="/img/vehikl_blog_logo.png">--}}
+                    {{--<br>--}}
+                    {{--Parking Lot Challenge--}}
+                {{--</div>--}}
+
+                {{--<div class="links">--}}
+                    {{--<a href="{{ url('/tickets') }}"><button>Enter Lot</button></a>--}}
+                    {{--<a href="{{ url('/waitList') }}"><button>Wait List</button></a>--}}
+                    {{--<a href="{{ url('/index') }}"><button>Exit Lot</button></a>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
     </body>
 </html>
