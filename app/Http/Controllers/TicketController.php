@@ -106,11 +106,13 @@ class TicketController extends Controller
 
         if($ticket->is_valid){
             $ticket->delete();
+
             return \Redirect::to('/goodbye');
         }
         else{
             \Session::flash('flash_message',
                 'You must pay for your ticket before you leave.');
+
             return \Redirect::to('/index');
         }
     }

@@ -1,13 +1,5 @@
  <h1>Edit Ticket #{{ $ticket->id }}</h1>
-    @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    @include('errors')
 
     <p>Edit the following information:</p>
     {{ Form::model($ticket, array('route' => array('ticket.update',

@@ -56,10 +56,15 @@ body {
     font-size: .75rem;
     text-transform: uppercase;
     letter-spacing: .03rem;
+    transition-duration: 0.4s;
 }
 
 .hero-buttons:not(:last-of-type) {
     margin-right: 1rem;
+}
+
+.hero-buttons:hover {
+    border-color: #8c8c8c;
 }
 
 .dark-primary-color    { background: #303F9F; }

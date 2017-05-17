@@ -14,54 +14,20 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="/css/margoStyle.css" type="text/css">
-
-        <style>
-            .m-b-md {
-                color: #000;
-            }
-            img {
-                width: 30%;
-                height: 10%;
-            }
-            button {
-                border-radius: 12px;
-                background-color: white;
-                transition-duration: 0.4s;
-            }
-
-            button:hover {
-                border-color: #EE783D;
-            }
-        </style>
-
     </head>
     <body>
-
         <div class="hero">
             <div class="hero-content">
                 <h1 class="hero-lead">Parkinglotly.io</h1>
                 <h2 class="hero-sub">An app created by: Margaret Tavares</h2>
                 <a href="{{ url('/tickets') }}" class="hero-buttons">Enter Lot</a>
-                <a href="{{ url('/waitList') }}" class="hero-buttons">Wait List</a>
-                <a href="{{ url('/index') }}" class="hero-buttons">Exit Lot</a>
+                @if ($availableSpaces == 0)
+                    <a href="{{ url('/waitList') }}" class="hero-buttons">Wait List</a>
+                @endif
+                @if ($availableSpaces <= 4)
+                    <a href="{{ url('/index') }}" class="hero-buttons">Exit Lot</a>
+                @endif
             </div>
         </div>
-
-
-        {{--<div class="flex-center position-ref full-height">--}}
-            {{--<div class="content">--}}
-                {{--<div class="title m-b-md">--}}
-                    {{--<img src="/img/vehikl_blog_logo.png">--}}
-                    {{--<br>--}}
-                    {{--Parking Lot Challenge--}}
-                {{--</div>--}}
-
-                {{--<div class="links">--}}
-                    {{--<a href="{{ url('/tickets') }}"><button>Enter Lot</button></a>--}}
-                    {{--<a href="{{ url('/waitList') }}"><button>Wait List</button></a>--}}
-                    {{--<a href="{{ url('/index') }}"><button>Exit Lot</button></a>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
     </body>
 </html>
