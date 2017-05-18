@@ -126,6 +126,7 @@ class TicketController extends Controller
             [
                 'availableSpaces' => $availableSpaces,
                 'totalSpaces'     => self::TOTAL_SPACES,
+                'occupiedSpaces'  => $occupiedSpaces->count()
             ]
         );
     }

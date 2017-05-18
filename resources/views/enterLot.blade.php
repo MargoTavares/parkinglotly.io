@@ -1,54 +1,28 @@
 <!doctype html>
 <html lang="{{ config('app.locale') }}">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    @include('head')
     <title>Purchase Ticket</title>
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="/css/margoStyle.css" type="text/css">
-
-    <style>
-        input {
-            border-radius: 12px;
-            background-color: white;
-            transition-duration: 0.4s;
-        }
-
-        input:hover {
-            border-color: #EE783D;
-        }
-
-        button {
-            border-radius: 12px;
-            background-color: white;
-            transition-duration: 0.4s;
-        }
-
-        button:hover {
-            border-color: #EE783D;
-        }
-    </style>
 
 </head>
 <body>
-    @if(Request::is('*/*/edit'))
-        @include('edit')
-    @else
-        <h1>Welcome to Vehikl's Parking Lot</h1>
+    <div class="hero-enterLot">
+        <div class="hero-content">
+            @if(Request::is('*/*/edit'))
+                @include('edit')
+            @else
+                <h1 class="hero-load-enterLot">Welcome to parkinglotly.io</h1>
+                <h2 class="hero-sub">A Premium Parking Service</h2>
 
-        @include('errors')
+                @include('errors')
 
-        @if ($availableSpaces != 0)
-            @include('available')
-        @elseif($availableSpaces == 0)
-            @include('unavailable')
-        @endif
-    @endif
+                @if ($availableSpaces != 0)
+                    @include('available')
+                @elseif($availableSpaces == 0)
+                    @include('unavailable')
+                @endif
+            @endif
+        </div>
+    </div>
 </body>
 </html>
