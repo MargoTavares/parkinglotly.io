@@ -6,20 +6,27 @@
 
 <p>Please enter the following information:</p>
 {{ Form::open(array('action' => 'TicketController@store')) }}
-{{ Form::label('titleName', 'Name:') }}
-{{ Form::text('name') }}<br>
-{{ Form::label('titleLicensePlate', 'License Plate #:') }}
-{{ Form::text('licensePlate') }}<br>
-{{ Form::label('titleTime', 'Choose Desired Time:') }}
-{{ Form::select('rateTime',
-    [
-        1 => '1hr',
-        3 => '3hr',
-        6 => '6hr',
-        'ALL DAY' => 'ALL DAY'
-    ])
-}}<br><br>
-{{ Form::submit() }}
+<span class="tickets-label">
+    {{ Form::label('titleName', 'Name:') }}
+</span>
+    {{ Form::text('name') }}<br>
+<span class="tickets-label">
+    {{ Form::label('titleLicensePlate', 'License Plate #:') }}
+</span>
+    {{ Form::text('licensePlate') }}<br>
+<span class="tickets-label">
+    {{ Form::label('titleTime', 'Choose Desired Time:') }}
+</span>
+    {{ Form::select('rateTime',
+        [
+            1 => '1hr',
+            3 => '3hr',
+            6 => '6hr',
+            'ALL DAY' => 'ALL DAY'
+        ], null, ['class' => 'tickets-select'])
+    }}
+<br><br>
+    {{ Form::submit('Submit', array('class' => 'hero-buttons-submit')) }}
 {{ Form::close() }}
 
 
