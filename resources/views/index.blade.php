@@ -4,53 +4,18 @@
     @include('head')
 
     <title>Ticket Listing</title>
-
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 90%;
-        }
-        table, th {
-            font-weight: 300;
-            color: black;
-        }
-        table, th, td {
-            border: 1px solid black;
-            padding: 5px;
-        }
-        html {
-            margin-left: 5vh;
-        }
-        button {
-            border-radius: 12px;
-            background-color: white;
-            transition-duration: 0.4s;
-        }
-
-        button:hover {
-            border-color: #EE783D;
-        }
-    </style>
-
 </head>
 <body>
-    <h1>Members of Vehikl's Parking Lot</h1>
+<div class="hero-enterLot">
+    <div class="hero-content">
+        <h1 class="hero-load-enterLot">Members of Vehikl's Parking Lot</h1>
     @if (Session::has('message'))
         <div class="alert alert-success">
             {{ Session::get('message') }}
         </div>
     @endif
     <br>
-    @if (count($errors) > 0)
-        <div class="alert alert-danger error">
-
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+        @include('errors')
     <table>
         <thead>
             <td>Ticket ID</td>
@@ -66,9 +31,9 @@
             <tr>
                 <td>{{ $value->id }}</td>
                 <td>{{ $value->name }}</td>
-                <td>{{ $value->licensePlate }}</td>
+                <td class="caps">{{ $value->licensePlate }}</td>
                 <td>
-                    @if($value->rateTime == 9)
+                    @if($value->rateTime == "ALL DAY")
                         ALL DAY
                     @elseif($value->rateTime > 1)
                         {{ $value->rateTime }} hrs
@@ -126,6 +91,8 @@
         </tbody>
     </table>
     <br>
-    <a href="/"><button>Return To Home Page</button></a>
+    <a href="/" class="hero-buttons-submit">Return To Home Page</a>
+    </div>
+</div>
 </body>
 </html>

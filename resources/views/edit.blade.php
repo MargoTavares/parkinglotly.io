@@ -1,22 +1,29 @@
- <h1>Edit Ticket #{{ $ticket->id }}</h1>
+
+<h1 class="hero-load-enterLot">Edit Ticket #{{ $ticket->id }}</h1>
     @include('errors')
 
     <p>Edit the following information:</p>
     {{ Form::model($ticket, array('route' => array('ticket.update',
             $ticket->id), 'method' => 'PUT')) }}
+    <span class="tickets-label">
         {{ Form::label('titleName', 'Name:') }}
+    </span>
         {{ Form::text('name', $ticket->name) }}<br>
+    <span class="tickets-label">
         {{ Form::label('titleLicensePlate', 'License Plate #:') }}
+    </span>
         {{ Form::text('licensePlate', $ticket->licensePlate) }}<br>
+    <span class="tickets-label">
         {{ Form::label('titleTime', 'Choose Desired Time:') }}
+    </span>
         {{ Form::select('rateTime',
             [
                 1 => '1hr',
                 3 => '3hr',
                 6 => '6hr',
-                9 => 'ALL DAY'
-            ])
+                'ALL DAY' => 'ALL DAY'
+            ], null, ['class' => 'tickets-select'])
         }}
-        <br>
-        {{ Form::submit('Save Changes') }}
+    <br><br>
+        {{ Form::submit('Save Changes', array('class' => 'hero-buttons-submit')) }}
     {{ Form::close() }}

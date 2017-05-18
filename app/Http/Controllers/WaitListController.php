@@ -45,15 +45,8 @@ class WaitListController extends Controller
         $waitList->email = $request->email;
         $waitList->save();
 
-        return redirect('/waitList');
-    }
-
-    public function update($id) {
-    }
-
-    public function edit($id) {
-    }
-
-    public function destroy($id) {
+        return \Redirect::to('/waitList')
+            ->withMessage('Thank you, ' . $waitList->firstName .
+                '. You will receive an email once a spot becomes available.');
     }
 }

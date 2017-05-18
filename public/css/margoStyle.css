@@ -16,6 +16,10 @@ body {
     font-size: 16px;
 }
 
+.caps {
+    text-transform: uppercase;
+}
+
 .content {
     text-align: center;
 }
@@ -78,6 +82,15 @@ body {
     letter-spacing: 0.1rem;
     font-weight: 400;
     margin-bottom: 2rem;
+}
+
+.hero-sub-waitlist {
+    font-size: 1rem;
+    color: var(--lighter-grey);
+    letter-spacing: 0.1rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
 }
 
 .hero-buttons {
@@ -156,8 +169,28 @@ li {
     top: 18px;
 }
 
-table, th, td {
+table {
+    border-collapse: collapse;
+    width: 100%;
+    padding-top: 5px;
+}
+
+thead {
+    background-color: var(--default-primary-color) !important;
+    font-weight: 500;
+    color: var(--white);
+
+}
+
+tr:nth-child(even) {
+    background-color: var(--lighter-grey);
+}
+
+tbody {
     border: 1px solid black;
+    padding: 5px;
+    background-color: var(--lightest-grey);
+    color: black;
 }
 
 .title {

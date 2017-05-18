@@ -21,9 +21,8 @@ class TicketController extends Controller
             '1' => self::PRICE_ONE_HR,
             '3' => self::PRICE_THREE_HR,
             '6' => self::PRICE_SIX_HR,
-            '9' => self::PRICE_ALL_DAY,
+            'ALL DAY' => self::PRICE_ALL_DAY,
         ];
-
         return View::make('index')
             ->with('tickets', $tickets)
             ->with('prices', $prices);
