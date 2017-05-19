@@ -1,5 +1,5 @@
 <h1 class="hero-load-enterLot">Edit Ticket #{{ $ticket->id }}</h1>
-    @include('errors')
+    @include('HTMLDefault.errors')
 
     <p>Edit the following information:</p>
     {{ Form::model($ticket, array('route' => array('ticket.update',

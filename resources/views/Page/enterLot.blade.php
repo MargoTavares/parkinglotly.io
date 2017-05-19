@@ -1,16 +1,16 @@
 <!doctype html>
 <html lang="{{ config('app.locale') }}">
-    @include('head')
+    @include('HTMLDefault.head')
 <body>
     <div class="hero-enterLot">
         <div class="hero-content">
             @if(Request::is('*/*/edit'))
-                @include('edit')
+                @include('Page.edit')
             @else
                 <h1 class="hero-load-enterLot">Welcome to parkinglotly.io</h1>
                 <h2 class="hero-sub">A Premium Parking Service</h2>
 
-                @include('errors')
+                @include('HTMLDefault.errors')
 
                 @if ($availableSpaces != 0)
                     @include('available')

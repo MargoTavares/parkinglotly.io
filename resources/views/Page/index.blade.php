@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="{{ config('app.locale') }}">
 
-@include('head')
+@include('HTMLDefault.head')
 
 <body>
     <div class="hero-enterLot">
@@ -13,8 +13,8 @@
                 </div>
             @endif
             <br>
-                @include('errors')
-                @include('ticketListingTable')
+                @include('HTMLDefault.errors')
+                @include('Table.ticketListingTable')
             <br>
             <a href="/" class="hero-buttons-submit">Home</a>
         </div>

@@ -25,7 +25,7 @@ class WaitListController extends Controller
         $tickets = Ticket::all();
 
         return view(
-            'enterWait',
+            'Page.enterWait',
             [
                 'tickets' => $tickets
             ]

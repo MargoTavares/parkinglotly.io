@@ -1,15 +1,15 @@
 <!doctype html>
 <html lang="{{ config('app.locale') }}">
 
-@include('head')
+@include('HTMLDefault.head')
 
 </body>
     <div class="hero-enterLot">
         <div class="hero-content">
             <h1 class="hero-load-enterLot">Parkinglotly.io WaitList</h1>
 
-            @include('errors')
-            @include('waitListForm')
+            @include('HTMLDefault.errors')
+            @include('Form.waitListForm')
 
         </div>
     </div>

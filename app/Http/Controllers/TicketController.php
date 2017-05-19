@@ -23,7 +23,7 @@ class TicketController extends Controller
             '6' => self::PRICE_SIX_HR,
             'ALL DAY' => self::PRICE_ALL_DAY,
         ];
-        return View::make('index')
+        return View::make('Page.index')
             ->with('tickets', $tickets)
             ->with('prices', $prices);
     }
@@ -33,7 +33,7 @@ class TicketController extends Controller
         $availableSpaces = self::TOTAL_SPACES - $occupiedSpaces->count();
 
         return view(
-            'enterLot',
+            'Page.enterLot',
             [
                 'availableSpaces' => $availableSpaces,
                 'totalSpaces'     => self::TOTAL_SPACES,
@@ -94,7 +94,7 @@ class TicketController extends Controller
         $availableSpaces    = self::TOTAL_SPACES - $occupiedSpaces->count();
         $ticket             = Ticket::findOrFail($id);
 
-        return View::make('enterLot')
+        return View::make('Page.enterLot')
             ->with('ticket', $ticket)
             ->with('availableSpaces', $availableSpaces)
             ->with('totalSpaces', self::TOTAL_SPACES);
@@ -121,7 +121,7 @@ class TicketController extends Controller
         $availableSpaces = self::TOTAL_SPACES - $occupiedSpaces->count();
 
         return view(
-            'welcome',
+            'Page.welcome',
             [
                 'availableSpaces' => $availableSpaces,
                 'totalSpaces'     => self::TOTAL_SPACES,
@@ -129,6 +129,4 @@ class TicketController extends Controller
             ]
         );
     }
-
-
 }

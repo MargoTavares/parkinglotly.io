@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="{{ config('app.locale') }}">
-@include('head')
+@include('HTMLDefault.head')
 <body>
     <div class="hero">
         <div class="hero-content">
