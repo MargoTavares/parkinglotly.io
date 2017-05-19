@@ -44,6 +44,7 @@
                     {{ Form::close() }}
                 </td>
                 <td>
+                    @if($value->is_valid == 1)
                     {{ Form::open([
                             'route' => [
                                 'ticket.destroy',
@@ -54,8 +55,11 @@
                     }}
                     {{ Form::submit('Exit Lot') }}
                     {{ Form::close() }}
+                    @else
+                    @endif
                 </td>
                 <td>
+                    @if($value->is_valid == 0)
                     {{ Form::open([
                             'route' => [
                                 'ticket.edit',
@@ -66,6 +70,8 @@
                     }}
                     {{ Form::submit('Edit') }}
                     {{ Form::close() }}
+                    @else
+                    @endif
                 </td>
             </tr>
         @endforeach
