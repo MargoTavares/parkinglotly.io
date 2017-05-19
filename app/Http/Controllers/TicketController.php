@@ -44,7 +44,7 @@ class TicketController extends Controller
     public function store(Request $request) {
         $this->validate($request, [
             'name'          => 'required|max:40',
-            'licensePlate'  => 'required|max:8',
+            'licensePlate'  => 'required|max:7',
             'rateTime'      => 'required'
         ]);
 
