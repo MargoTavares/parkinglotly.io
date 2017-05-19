@@ -1,4 +1,3 @@
-
 <h1 class="hero-load-enterLot">Edit Ticket #{{ $ticket->id }}</h1>
     @include('errors')
 

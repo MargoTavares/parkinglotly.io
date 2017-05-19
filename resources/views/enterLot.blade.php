@@ -1,10 +1,6 @@
 <!doctype html>
 <html lang="{{ config('app.locale') }}">
-<head>
     @include('head')
-    <title>Purchase Ticket</title>
-
-</head>
 <body>
     <div class="hero-enterLot">
         <div class="hero-content">

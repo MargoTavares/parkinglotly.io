@@ -55,7 +55,7 @@ class TicketController extends Controller
         $ticket->save();
 
         return \Redirect::to('/index')
-            ->withMessage('Thank you,' . $ticket->name .
+            ->withMessage('Thank you, ' . $ticket->name .
                 '. You have successfully created a ticket.');
     }
 

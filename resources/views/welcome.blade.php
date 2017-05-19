@@ -1,16 +1,6 @@
 <!doctype html>
 <html lang="{{ config('app.locale') }}">
-    <head>
         @include('head')
-
-        <title>Parking Lot Challenge</title>
-
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
-
-    </head>
     <body>
         <div class="hero">
             <div class="hero-content">
